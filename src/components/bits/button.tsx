@@ -20,6 +20,6 @@ const Button = (props:Props) => {
             click me
         </Btn>
     </>
-}
+};
 
 export default Button;
