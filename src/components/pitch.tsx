@@ -1,23 +1,24 @@
 import React from 'react';
-import {Row, Col} from '@bootstrap-styled/v4';
-import Button from './bits/button';
+import {Grid, Button} from '@material-ui/core';
 
-interface Props{
+import style from './styles.module.scss';
 
-}
+import {DiscordBot} from '../api/MotherBrain/discordBots';
 
-const Pitch = () => {
-    return <>
-        <Row>
-            <Col>Description</Col>
-            <Col>Story</Col>
-            <Col>filler</Col>
-            <Col>filler</Col>
-        </Row>
-        <Row>
-            <Col><Button /></Col>
-        </Row>
-    </>
+export default function Pitch(props:DiscordBot){
+    return <Grid container className={style.pitch}>
+        <Grid item xs={12}>
+            <Grid item>
+                <img src={props.image} alt="discord bot"/>
+            </Grid>
+            <Grid item>{props.title}</Grid>
+            {props.tags.map((tag,key) => (
+                <Grid item key={key}>
+                    {tag}
+                </Grid>
+            ))}
+            <Grid item>{props.description}</Grid>
+            <Grid item><Button>{props.link}</Button></Grid>
+        </Grid>
+    </Grid>
 };
-
-export default Pitch;

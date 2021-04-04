@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+
+import {GetAll, DiscordBot} from './api/MotherBrain/discordBots';
+
 import Pitch from './components/pitch';
 
 function App() {
+  const [discordBots, setDiscordBots] = useState<DiscordBot[]>();
+  useEffect(() => {
+    setDiscordBots(GetAll());
+  },[])
   return (
     <div className="App">
       <header className="App-header">
-      <Pitch />
+      {discordBots != null && discordBots.map((bot,key) => (
+        <Pitch {...bot} key={key}/>
+      ))}
       </header>
     </div>
   );
