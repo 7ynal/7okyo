@@ -1,7 +1,51 @@
+@use '../styles/_theme.scss' as theme;
 .pitch {
-  background-color: red;
-  img {
-    height: 20px;
-    width: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  .card {
+    border: 2px solid theme.$primaryGlow;
+    background-color: #2b2e38;
+    color: theme.$primaryGlow;
+    .gridContainer {
+      height: 15rem;
+      padding: 5px;
+    }
+    .title {
+      text-transform: uppercase;
+      color: theme.$primaryGlow;
+      font-size: 1.5rem;
+    }
+    .botImageDiv {
+      .botImage {
+        width: 75%;
+        height: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        border: 5px solid theme.$secondaryDark;
+      }
+    }
+    .moreInfoButton {
+      text-transform: lowercase;
+      color: theme.$primaryGlow;
+      border: 1px solid theme.$primaryGlow;
+      padding: 4px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      margin-top: 4px;
+      &:hover {
+        background-color: theme.$primaryGlow;
+        color: #2b2e38;
+      }
+    }
+    .description {
+      font-size: 0.9rem;
+    }
+    .tags {
+      font-size: 0.8rem;
+      .tag {
+        background-color: theme.$secondaryDark;
+        margin: 4px;
+      }
+    }
   }
 }

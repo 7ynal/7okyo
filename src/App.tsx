@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Grid} from '@material-ui/core';
 import './App.css';
 
 import {GetAll, DiscordBot} from './api/MotherBrain/discordBots';
@@ -11,13 +12,13 @@ function App() {
     setDiscordBots(GetAll());
   },[])
   return (
-    <div className="App">
-      <header className="App-header">
-      {discordBots != null && discordBots.map((bot,key) => (
-        <Pitch {...bot} key={key}/>
-      ))}
-      </header>
-    </div>
+    <Grid container direction={'row'} justify={'center'}>
+      <Grid item xs={8}>
+        {discordBots != null && discordBots.map((bot,key) => (
+          <Pitch {...bot} key={key}/>
+        ))}
+      </Grid>
+    </Grid>
   );
 }
 
