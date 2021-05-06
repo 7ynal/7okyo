@@ -1,31 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import {Grid} from '@material-ui/core';
 
-import {GetAll, DiscordBot} from './api/MotherBrain/discordBots';
-
 import Nav from './pages/nav';
-import Pitch from './components/pitch';
 import Home from './pages/home';
 import CreateBot from './pages/create/bot';
 import Create from './pages/create';
 
-import './App.css';
+import style from './style.module.scss';
 
 
 function App() {
-  const [discordBots, setDiscordBots] = useState<DiscordBot[]>();
-  useEffect(() => {
-    setDiscordBots(GetAll());
-  },[])
   return (
     <Router>
-      <Nav />
+      <Grid container className={style.background}>
       <Switch>
           <Route path="/create/bot">
             <CreateBot />
@@ -37,13 +29,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      <Grid container direction={'row'} justify={'center'}>
-        <Grid item xs={8}>
-          {discordBots != null && discordBots.map((bot,key) => (
-            <Pitch {...bot} key={key}/>
-          ))}
-        </Grid>
       </Grid>
+      <Nav />
   </Router>
   );
 }
